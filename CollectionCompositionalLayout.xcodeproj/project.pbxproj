@@ -109,18 +109,16 @@
 		43DCCB3F2AF88BEE009A4528 /* CollectionCompositionalLayout */ = {
 			isa = PBXGroup;
 			children = (
+				43DCCB7D2AF91261009A4528 /* Manager */,
+				43DCCB7C2AF91259009A4528 /* View */,
+				43DCCB7B2AF91251009A4528 /* Model */,
+				43DCCB7A2AF91248009A4528 /* ViewController */,
 				43DCCB402AF88BEE009A4528 /* AppDelegate.swift */,
 				43DCCB422AF88BEE009A4528 /* SceneDelegate.swift */,
-				43DCCB442AF88BEE009A4528 /* ColelctionCompositionViewController.swift */,
 				43DCCB462AF88BEE009A4528 /* Main.storyboard */,
 				43DCCB492AF88BEF009A4528 /* Assets.xcassets */,
 				43DCCB4B2AF88BEF009A4528 /* LaunchScreen.storyboard */,
 				43DCCB4E2AF88BEF009A4528 /* Info.plist */,
-				43DCCB702AF8987E009A4528 /* Model.swift */,
-				43DCCB722AF8A1EE009A4528 /* CompositionalGridCell.swift */,
-				43DCCB742AF8EC70009A4528 /* CollectionCompositionalLayout.swift */,
-				43DCCB762AF8EF3E009A4528 /* Datamanager.swift */,
-				43DCCB782AF8FE3D009A4528 /* SectionHeaderView.swift */,
 			);
 			path = CollectionCompositionalLayout;
 			sourceTree = "<group>";
@@ -140,6 +138,40 @@
 				43DCCB632AF88BF0009A4528 /* CollectionCompositionalLayoutUITestsLaunchTests.swift */,
 			);
 			path = CollectionCompositionalLayoutUITests;
+			sourceTree = "<group>";
+		};
+		43DCCB7A2AF91248009A4528 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				43DCCB442AF88BEE009A4528 /* ColelctionCompositionViewController.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		43DCCB7B2AF91251009A4528 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				43DCCB702AF8987E009A4528 /* Model.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		43DCCB7C2AF91259009A4528 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				43DCCB722AF8A1EE009A4528 /* CompositionalGridCell.swift */,
+				43DCCB782AF8FE3D009A4528 /* SectionHeaderView.swift */,
+				43DCCB742AF8EC70009A4528 /* CollectionCompositionalLayout.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		43DCCB7D2AF91261009A4528 /* Manager */ = {
+			isa = PBXGroup;
+			children = (
+				43DCCB762AF8EF3E009A4528 /* Datamanager.swift */,
+			);
+			path = Manager;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
