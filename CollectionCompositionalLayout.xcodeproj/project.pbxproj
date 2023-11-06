@@ -18,6 +18,9 @@
 		43DCCB642AF88BF0009A4528 /* CollectionCompositionalLayoutUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43DCCB632AF88BF0009A4528 /* CollectionCompositionalLayoutUITestsLaunchTests.swift */; };
 		43DCCB712AF8987E009A4528 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43DCCB702AF8987E009A4528 /* Model.swift */; };
 		43DCCB732AF8A1EE009A4528 /* CompositionalGridCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43DCCB722AF8A1EE009A4528 /* CompositionalGridCell.swift */; };
+		43DCCB752AF8EC70009A4528 /* CollectionCompositionalLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43DCCB742AF8EC70009A4528 /* CollectionCompositionalLayout.swift */; };
+		43DCCB772AF8EF3E009A4528 /* Datamanager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43DCCB762AF8EF3E009A4528 /* Datamanager.swift */; };
+		43DCCB792AF8FE3D009A4528 /* SectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43DCCB782AF8FE3D009A4528 /* SectionHeaderView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +56,9 @@
 		43DCCB632AF88BF0009A4528 /* CollectionCompositionalLayoutUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionCompositionalLayoutUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		43DCCB702AF8987E009A4528 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		43DCCB722AF8A1EE009A4528 /* CompositionalGridCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompositionalGridCell.swift; sourceTree = "<group>"; };
+		43DCCB742AF8EC70009A4528 /* CollectionCompositionalLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionCompositionalLayout.swift; sourceTree = "<group>"; };
+		43DCCB762AF8EF3E009A4528 /* Datamanager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Datamanager.swift; sourceTree = "<group>"; };
+		43DCCB782AF8FE3D009A4528 /* SectionHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionHeaderView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -112,6 +118,9 @@
 				43DCCB4E2AF88BEF009A4528 /* Info.plist */,
 				43DCCB702AF8987E009A4528 /* Model.swift */,
 				43DCCB722AF8A1EE009A4528 /* CompositionalGridCell.swift */,
+				43DCCB742AF8EC70009A4528 /* CollectionCompositionalLayout.swift */,
+				43DCCB762AF8EF3E009A4528 /* Datamanager.swift */,
+				43DCCB782AF8FE3D009A4528 /* SectionHeaderView.swift */,
 			);
 			path = CollectionCompositionalLayout;
 			sourceTree = "<group>";
@@ -264,9 +273,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				43DCCB772AF8EF3E009A4528 /* Datamanager.swift in Sources */,
 				43DCCB452AF88BEE009A4528 /* ColelctionCompositionViewController.swift in Sources */,
 				43DCCB412AF88BEE009A4528 /* AppDelegate.swift in Sources */,
+				43DCCB792AF8FE3D009A4528 /* SectionHeaderView.swift in Sources */,
 				43DCCB432AF88BEE009A4528 /* SceneDelegate.swift in Sources */,
+				43DCCB752AF8EC70009A4528 /* CollectionCompositionalLayout.swift in Sources */,
 				43DCCB712AF8987E009A4528 /* Model.swift in Sources */,
 				43DCCB732AF8A1EE009A4528 /* CompositionalGridCell.swift in Sources */,
 			);

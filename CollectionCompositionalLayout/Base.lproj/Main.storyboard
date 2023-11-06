@@ -27,7 +27,7 @@
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="z11-Xl-fBG" customClass="CompositionalGridCell" customModule="CollectionCompositionalLayout" customModuleProvider="target">
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="CompositionalGridCell" id="z11-Xl-fBG" customClass="CompositionalGridCell" customModule="CollectionCompositionalLayout" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="127.99999999999997" height="128"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="bHC-UL-Asj">
@@ -52,8 +52,8 @@
                                     </collectionViewCell>
                                 </cells>
                                 <connections>
-                                    <outlet property="dataSource" destination="BYZ-38-t0r" id="bT3-eO-Qk4"/>
-                                    <outlet property="delegate" destination="BYZ-38-t0r" id="5nG-L6-sJv"/>
+                                    <outlet property="dataSource" destination="BYZ-38-t0r" id="lBh-1T-LRE"/>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="JVk-rt-waP"/>
                                 </connections>
                             </collectionView>
                         </subviews>
@@ -66,6 +66,9 @@
                             <constraint firstItem="L5G-FO-pzm" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="Ttf-gt-FVx"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="collectionView" destination="L5G-FO-pzm" id="o5c-wY-49g"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>

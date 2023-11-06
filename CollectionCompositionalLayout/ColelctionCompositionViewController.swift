@@ -15,29 +15,33 @@
 
 import UIKit
 
-enum Section: Int, CaseIterable {
-    case horizontalGrid
-    case verticalGrid
-}
-
-enum SectionItems: Hashable {
-    case horizontalGrid(HorizontalGridModel)
-    case verticalGrid(VerticalGridModel)
-}
-
-typealias DataSource = UICollectionViewDiffableDataSource<Section,SectionItems>
-typealias DataSourceSnapshot = NSDiffableDataSourceSnapshot<Section,SectionItems>
-
 class ColelctionCompositionViewController: UIViewController {
     
     @IBOutlet weak var collectionView: UICollectionView!
     lazy var dataSource = configureDataSource()
-
+    lazy var layout: UICollectionViewCompositionalLayout? = UICollectionViewCompositionalLayout { sectionIndex, environment in
+        
+        guard let sectionType = Section(rawValue: sectionIndex) else { return nil}
+        
+        switch sectionType {
+        case .horizontalGrid:
+            return self.horizontalGridSection()
+        case .verticalGrid:
+            return self.verticalGridSection()
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        
+        guard let layout else { return }
+        collectionView.register(SectionHeaderView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: SectionHeaderView.identifier)
+        collectionView.dataSource = dataSource
+        collectionView.setCollectionViewLayout(layout, animated: true)
+        applyDataSource(with: DataManger.shared.horizontalGrids, verticalGrids: DataManger.shared.verticalGrids, animatingDifferences: true)
+        
     }
-
+    
     private func applyDataSource(with horizontalGrids: [HorizontalGridModel], verticalGrids: [VerticalGridModel], animatingDifferences: Bool) {
         var snapShot = DataSourceSnapshot()
         snapShot.deleteAllItems()
@@ -59,10 +63,59 @@ class ColelctionCompositionViewController: UIViewController {
             case .verticalGrid(let model):
                 cell.titleLabel.text = "VG - \(model.name)"
             }
-           
+            
             return cell
         }
         return dataSource
+    }
+    
+    
+    private func horizontalGridSection() -> NSCollectionLayoutSection {
+        let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .fractionalHeight(1))
+        let item = NSCollectionLayoutItem(layoutSize: itemSize)
+        
+        let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(0.7), heightDimension: .absolute(225))
+        let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitems: [item])
+        group.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 0
+                                                      , bottom: 0, trailing: 20)
+        
+        let section = NSCollectionLayoutSection(group: group)
+        section.contentInsets = NSDirectionalEdgeInsets(top: 10, leading: 20
+                                                        , bottom: 10, trailing: 0)
+        section.orthogonalScrollingBehavior = .continuous
+        return section
+    }
+    
+    private func verticalGridSection() -> NSCollectionLayoutSection {
+        let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(0.5), heightDimension: .fractionalHeight(1))
+        let item = NSCollectionLayoutItem(layoutSize: itemSize)
+        item.contentInsets = .init(top: 10, leading: 10, bottom: 10, trailing: 10)
+        
+        let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .absolute(120))
+        let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitems: [item])
+        
+        
+        let section = NSCollectionLayoutSection(group: group)
+        section.contentInsets = .init(top: 10, leading: 10, bottom: 10, trailing: 10)
+        return section
+    }
+    
+}
+
+
+//MARK: UICollectionView Delegate
+extension ColelctionCompositionViewController : UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+        
+        guard kind == UICollectionView.elementKindSectionHeader, let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: SectionHeaderView.identifier, for: indexPath) as?
+                SectionHeaderView, let sectionType = Section(rawValue: indexPath.item) else { return UICollectionReusableView() }
+        switch sectionType {
+        case .horizontalGrid:
+            headerView.titleLabel.text = "Horizontal Cards"
+        case .verticalGrid:
+            headerView.titleLabel.text = "Vertical Grid"
+        }
+        return headerView
     }
 }
 
