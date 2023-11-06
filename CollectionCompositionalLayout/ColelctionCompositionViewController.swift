@@ -66,6 +66,18 @@ class ColelctionCompositionViewController: UIViewController {
             
             return cell
         }
+        
+        dataSource.supplementaryViewProvider = { collectionView, kind, indexPath in
+            guard kind == UICollectionView.elementKindSectionHeader, let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: SectionHeaderView.identifier, for: indexPath) as?
+                    SectionHeaderView, let sectionType = Section(rawValue: indexPath.section) else { return UICollectionReusableView() }
+            switch sectionType {
+            case .horizontalGrid:
+                headerView.titleLabel.text = "Horizontal Cards"
+            case .verticalGrid:
+                headerView.titleLabel.text = "Vertical Grid"
+            }
+            return headerView
+        }
         return dataSource
     }
     
@@ -83,6 +95,13 @@ class ColelctionCompositionViewController: UIViewController {
         section.contentInsets = NSDirectionalEdgeInsets(top: 10, leading: 20
                                                         , bottom: 10, trailing: 0)
         section.orthogonalScrollingBehavior = .continuous
+        let sectionHeader = NSCollectionLayoutBoundarySupplementaryItem(
+            layoutSize: NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .estimated(50)),
+            elementKind: UICollectionView.elementKindSectionHeader,
+            alignment: .top
+        )
+        
+        section.boundarySupplementaryItems = [sectionHeader]
         return section
     }
     
@@ -97,25 +116,14 @@ class ColelctionCompositionViewController: UIViewController {
         
         let section = NSCollectionLayoutSection(group: group)
         section.contentInsets = .init(top: 10, leading: 10, bottom: 10, trailing: 10)
+        let sectionHeader = NSCollectionLayoutBoundarySupplementaryItem(
+            layoutSize: NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .estimated(50)),
+            elementKind: UICollectionView.elementKindSectionHeader,
+            alignment: .top
+        )
+        
+        section.boundarySupplementaryItems = [sectionHeader]
         return section
     }
     
 }
-
-
-//MARK: UICollectionView Delegate
-extension ColelctionCompositionViewController : UICollectionViewDelegate {
-    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
-        
-        guard kind == UICollectionView.elementKindSectionHeader, let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: SectionHeaderView.identifier, for: indexPath) as?
-                SectionHeaderView, let sectionType = Section(rawValue: indexPath.item) else { return UICollectionReusableView() }
-        switch sectionType {
-        case .horizontalGrid:
-            headerView.titleLabel.text = "Horizontal Cards"
-        case .verticalGrid:
-            headerView.titleLabel.text = "Vertical Grid"
-        }
-        return headerView
-    }
-}
-
